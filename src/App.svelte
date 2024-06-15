@@ -1,6 +1,5 @@
 <script>
     import { scaleLinear } from 'd3';
-	import { scale } from 'svelte/transition';
     const data = [
         { a: 155, b: 384, r: 20, fill: '#0000FF' },
 		{ a: 340, b: 238, r: 52, fill: '#FF0AAE' },
@@ -21,7 +20,7 @@
         .range([height,0]);
 </script>
 
-<main>
+<main bind:clientWidth={width} bind:clientHeight={height}>
     <svg width={width} height={height} >
         {#each data as {a,b,r,fill}}
             <circle
@@ -36,8 +35,8 @@
 
 <style>
     main {
-        width:100vw;
-        height:100vh;
+        width: 100vw;
+        height: 100vh;
     }
     svg {
         background: #f3fff0;
